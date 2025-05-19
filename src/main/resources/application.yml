@@ -1,0 +1,38 @@
+spring:
+
+  redis:
+    port: 6379 #端口号
+    password: Guiji2387 #输入redis数据库密码
+    host: localhost  #输入ip地址
+    database: 0 #数据库索引
+    jedis:
+      pool:
+        max-idle: 6    #最大空闲数
+        max-active: 10 #最大连接数
+        min-idle: 2    #最小空闲数
+    timeout: 2000   #连接超时
+  datasource:
+    url: jdbc:mysql://localhost:3306/xiaomi
+    username: guiji2387
+    password: Guiji2387
+    driver-class-name: com.mysql.cj.jdbc.Driver
+dubbo:
+  application:
+    name: provider
+  protocol:
+    port: 20880
+  registry:
+    address: nacos://127.0.0.1:8848
+server:
+  port: 8080
+mybatis:
+  mapper-locations: classpath:com.example.xiaomidemo.resources.Mapper/*.xml
+  configuration:
+   map-underscore-to-camel-case: true
+rocketmq:
+ name-server: 0.0.0.0:9876 # 访问地址
+ producer:
+  group: battery-warning-consumer # 必须指定group
+  send-message-timeout: 3000 # 消息发送超时时长，默认3s
+  retry-times-when-send-failed: 3 # 同步发送消息失败重试次数，默认2
+  retry-times-when-send-async-failed: 3 # 异步发送消息失败重试次数，默认2
