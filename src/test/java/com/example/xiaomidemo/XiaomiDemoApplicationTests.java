@@ -84,3 +84,4 @@ class XiaomiDemoApplicationTests {
         verify(signalProcessingService, times(1)).processBatch(any(SignalBatch.class));
     }
 }
+
